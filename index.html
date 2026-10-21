@@ -4,155 +4,434 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0b0d">
 
   <title>WOLF TRADER | Learn. Practice. Trade.</title>
   <meta name="description" content="Join WOLF Trader on Telegram for binary trading education, market discussions, and risk awareness.">
 
   <style>
+    :root {
+      --gold: #f5c451;
+      --gold-light: #ffe19a;
+      --bg: #0b0b0d;
+      --card: #141416;
+      --text: #ffffff;
+      --muted: #b0b0ba;
+      --border: #2b2b30;
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #0b0b0d;
-      color: #ffffff;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      background:
+        radial-gradient(ellipse at 50% 30%, #28200e 0%, transparent 55%),
+        var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
     }
+
+    /* HEADER */
 
     header {
-      padding: 24px 7%;
-      border-bottom: 1px solid #262626;
+      width: 100%;
+      padding: 18px 6%;
+      border-bottom: 1px solid var(--border);
+      background: #0b0b0deF;
     }
 
-    .logo {
-      font-size: 25px;
+    .header-inner {
+      max-width: 1150px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 13px;
+      text-decoration: none;
+      min-width: 0;
+    }
+
+    /* CIRCULAR LOGO */
+
+    .logo-ring {
+      width: 62px;
+      height: 62px;
+      padding: 3px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      background: linear-gradient(
+        145deg,
+        #fff0b5,
+        #d6a52e,
+        #8c6418,
+        #f5c451
+      );
+      box-shadow:
+        0 0 0 3px #f5c45118,
+        0 0 22px #f5c45120;
+      overflow: hidden;
+    }
+
+    .logo-img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid #17130a;
+      background: #111111;
+    }
+
+    .brand-name {
+      color: var(--gold);
+      font-size: 22px;
       font-weight: 900;
-      letter-spacing: 3px;
-      color: #f5c451;
+      letter-spacing: 2.5px;
+      line-height: 1.2;
+    }
+
+    .brand-subtitle {
+      display: block;
+      color: #a7a7b0;
+      font-size: 10px;
+      letter-spacing: 2px;
+      margin-top: 5px;
+      font-weight: 600;
+    }
+
+    .header-link {
+      color: #e6e6eb;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: bold;
+      border: 1px solid var(--border);
+      padding: 9px 15px;
+      border-radius: 7px;
+      transition: 0.2s;
+    }
+
+    .header-link:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    /* MAIN HERO */
+
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
     }
 
     .hero {
-      flex: 1;
       width: 100%;
-      max-width: 900px;
-      margin: auto;
-      padding: 80px 24px;
+      max-width: 850px;
+      padding: 75px 24px 65px;
       text-align: center;
     }
 
-    .tag {
-      display: inline-block;
-      border: 1px solid #514323;
-      color: #f5c451;
-      border-radius: 30px;
-      padding: 8px 16px;
-      font-size: 12px;
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--gold);
+      border: 1px solid #57451f;
+      background: #f5c4510b;
+      padding: 8px 15px;
+      border-radius: 50px;
+      font-size: 11px;
+      font-weight: bold;
       letter-spacing: 2px;
-      margin-bottom: 25px;
+      margin-bottom: 27px;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 10px #f5c45180;
     }
 
     h1 {
-      font-size: clamp(42px, 8vw, 76px);
-      line-height: 1.08;
+      font-size: clamp(42px, 7vw, 72px);
       font-weight: 900;
-      letter-spacing: -2px;
-      margin-bottom: 24px;
+      line-height: 1.1;
+      letter-spacing: -2.5px;
+      margin-bottom: 23px;
     }
 
     h1 span {
-      color: #f5c451;
+      color: var(--gold);
     }
 
     .description {
-      color: #b5b5bd;
-      font-size: 17px;
-      line-height: 1.8;
       max-width: 570px;
-      margin: 0 auto 30px;
+      margin: 0 auto 28px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.85;
     }
+
+    /* TOPIC TAGS */
 
     .features {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 35px;
+      gap: 10px;
+      margin-bottom: 32px;
     }
 
     .features span {
+      display: inline-block;
+      padding: 9px 14px;
+      color: #dedee4;
       background: #171719;
-      border: 1px solid #303034;
-      color: #dedee3;
-      padding: 10px 15px;
-      border-radius: 6px;
+      border: 1px solid #303036;
+      border-radius: 7px;
       font-size: 13px;
     }
 
+    /* TELEGRAM BUTTON */
+
     .join-btn {
-      display: inline-block;
       width: 100%;
-      max-width: 340px;
-      padding: 17px 22px;
-      border-radius: 8px;
-      background: #f5c451;
-      color: #111111;
-      font-size: 16px;
-      font-weight: bold;
+      max-width: 355px;
+      min-height: 58px;
+      padding: 15px 20px;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 11px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, #ffe19a, #f5c451);
+      color: #17120a;
       text-decoration: none;
-      transition: 0.2s;
+      font-size: 15px;
+      font-weight: 900;
+      letter-spacing: 0.3px;
+      box-shadow: 0 8px 28px #f5c45120;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
 
     .join-btn:hover {
-      background: #ffda7c;
       transform: translateY(-2px);
+      box-shadow: 0 12px 35px #f5c45135;
     }
 
-    .note {
-      color: #85858e;
-      font-size: 12px;
-      margin-top: 17px;
+    .telegram-icon {
+      width: 21px;
+      height: 21px;
+      flex-shrink: 0;
     }
+
+    .join-note {
+      margin-top: 15px;
+      color: #92929c;
+      font-size: 12px;
+    }
+
+    /* LEARNING CARD */
+
+    .learning-card {
+      max-width: 580px;
+      margin: 48px auto 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      background: #131315;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      text-align: left;
+    }
+
+    .learning-item {
+      padding: 19px 15px;
+    }
+
+    .learning-item + .learning-item {
+      border-left: 1px solid var(--border);
+    }
+
+    .learning-number {
+      display: block;
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    .learning-item strong {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 4px;
+    }
+
+    .learning-item p {
+      color: #92929c;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    /* RISK DISCLOSURE */
 
     .disclaimer {
       max-width: 650px;
-      margin: 45px auto 0;
+      margin: 34px auto 0;
       color: #777780;
-      font-size: 12px;
+      font-size: 11px;
       line-height: 1.8;
     }
 
+    /* FOOTER */
+
     footer {
+      padding: 22px 20px;
+      border-top: 1px solid var(--border);
       text-align: center;
-      padding: 22px;
-      border-top: 1px solid #262626;
-      color: #777780;
+      color: #85858e;
       font-size: 12px;
     }
 
+    footer span {
+      color: var(--gold);
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    /* MOBILE RESPONSIVE */
+
     @media (max-width: 600px) {
       header {
-        padding: 20px;
+        padding: 15px 18px;
+      }
+
+      .logo-ring {
+        width: 51px;
+        height: 51px;
+      }
+
+      .brand {
+        gap: 10px;
+      }
+
+      .brand-name {
+        font-size: 17px;
+        letter-spacing: 1.8px;
+      }
+
+      .brand-subtitle {
+        font-size: 8px;
+        letter-spacing: 1.4px;
+      }
+
+      .header-link {
+        font-size: 11px;
+        padding: 8px 10px;
+        white-space: nowrap;
       }
 
       .hero {
-        padding: 65px 22px;
+        padding: 58px 21px 45px;
+      }
+
+      .eyebrow {
+        font-size: 10px;
+        letter-spacing: 1.5px;
       }
 
       h1 {
-        letter-spacing: -1.5px;
+        font-size: clamp(39px, 10vw, 54px);
+        letter-spacing: -1.8px;
       }
 
       .description {
         font-size: 15px;
+        line-height: 1.8;
+      }
+
+      .features {
+        gap: 8px;
+      }
+
+      .features span {
+        font-size: 12px;
+        padding: 8px 10px;
+      }
+
+      .join-btn {
+        max-width: 100%;
+        font-size: 14px;
+      }
+
+      .learning-card {
+        margin-top: 36px;
+      }
+
+      .learning-item {
+        padding: 15px 10px;
+      }
+
+      .learning-item strong {
+        font-size: 12px;
+      }
+
+      .learning-item p {
+        font-size: 11px;
+      }
+
+      .disclaimer {
+        font-size: 11px;
+        margin-top: 28px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .header-link {
+        font-size: 10px;
+        padding: 7px;
+      }
+
+      .brand-name {
+        font-size: 15px;
+      }
+
+      .brand-subtitle {
+        letter-spacing: 1px;
+      }
+
+      .logo-ring {
+        width: 44px;
+        height: 44px;
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
       *, *::before, *::after {
         transition: none !important;
       }
@@ -162,59 +441,126 @@
 
 <body>
 
-  
-<header>
-  <a class="brand" href="#" aria-label="WOLF TRADER home">
-    <img src="logo.png" alt="WOLF Trader Logo" class="logo-img">
-    <span class="logo-text">WOLF TRADER</span>
-  </a>
-</header>
+  <!-- HEADER -->
+  <header>
+    <div class="header-inner">
 
+      <a class="brand" href="#" aria-label="WOLF Trader home">
+        <span class="logo-ring">
+          <img
+            src="logo.png"
+            alt="WOLF Trader logo"
+            class="logo-img"
+            width="62"
+            height="62"
+          >
+        </span>
 
-  <main class="hero">
+        <span class="brand-name">
+          WOLF TRADER
+          <span class="brand-subtitle">THE TRADING COMMUNITY</span>
+        </span>
+      </a>
 
-    <div class="tag">BINARY TRADING COMMUNITY</div>
+      <a
+        class="header-link"
+        href="https://t.me/+sQNTy7GQco4zZDA9"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Join Telegram ↗
+      </a>
 
-    <h1>
-      Learn the Market.<br>
-      Master Your <span>Discipline.</span>
-    </h1>
-
-    <p class="description">
-      Join WOLF Trader to explore price action, understand market
-      movements, and develop a disciplined approach to trading.
-    </p>
-
-    <div class="features">
-      <span>Price Action</span>
-      <span>Market Education</span>
-      <span>Risk Awareness</span>
     </div>
+  </header>
 
-    <a
-      class="join-btn"
-      href="https://t.me/+sQNTy7GQco4zZDA9"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      JOIN WOLF ON TELEGRAM →
-    </a>
+  <!-- MAIN CONTENT -->
+  <main>
+    <section class="hero">
 
-    <p class="note">
-      Free community access · Adults only · Learn at your own pace
-    </p>
+      <div class="eyebrow">
+        <span class="status-dot"></span>
+        BINARY TRADING COMMUNITY
+      </div>
 
-    <p class="disclaimer">
-      Risk Warning: Binary trading involves a high risk of loss and
-      may not be suitable for everyone. You could lose your entire
-      trading amount. Educational content does not constitute financial
-      advice. No profits or trading results are guaranteed.
-    </p>
+      <h1>
+        Learn the Market.<br>
+        Master Your <span>Discipline.</span>
+      </h1>
 
+      <p class="description">
+        Join WOLF Trader to explore price action, understand market
+        movements, and develop a disciplined approach to trading.
+        Learn first. Understand the risks. Make informed decisions.
+      </p>
+
+      <div class="features">
+        <span>Price Action</span>
+        <span>Market Education</span>
+        <span>Risk Awareness</span>
+      </div>
+
+      <a
+        class="join-btn"
+        href="https://t.me/+sQNTy7GQco4zZDA9"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <svg
+          class="telegram-icon"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path d="M21.5 3 18.3 20c-.2 1-1 1.2-1.8.7l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.4-5 9-8.1c.4-.4-.1-.6-.6-.2L5.9 13.5 1.2 12c-1-.3-1-1 .2-1.5L20 3.3c.9-.3 1.7-.2 1.5-.3Z"/>
+        </svg>
+        JOIN WOLF ON TELEGRAM
+      </a>
+
+      <p class="join-note">
+        Free community access · Adults only · Learn at your own pace
+      </p>
+
+      <!-- LEARNING HIGHLIGHTS -->
+      <div class="learning-card">
+
+        <div class="learning-item">
+          <span class="learning-number">01 / LEARN</span>
+          <strong>Understand Charts</strong>
+          <p>Explore price action and market structure.</p>
+        </div>
+
+        <div class="learning-item">
+          <span class="learning-number">02 / PREPARE</span>
+          <strong>Know the Risks</strong>
+          <p>Understand potential losses before trading.</p>
+        </div>
+
+        <div class="learning-item">
+          <span class="learning-number">03 / PRACTICE</span>
+          <strong>Stay Disciplined</strong>
+          <p>Focus on patience and informed decisions.</p>
+        </div>
+
+      </div>
+
+      <!-- RISK DISCLOSURE -->
+      <p class="disclaimer">
+        <strong>Risk Warning:</strong>
+        Binary trading involves a high risk of loss and may not be
+        suitable for everyone. You could lose your entire trading
+        amount. All trading involves risk, and no strategy guarantees
+        profits. Content is for educational purposes only and is not
+        personalized financial advice. Participation is intended for
+        adults where legally permitted.
+      </p>
+
+    </section>
   </main>
 
+  <!-- FOOTER -->
   <footer>
-    © 2026 WOLF TRADER. All rights reserved.
+    © 2026 <span>WOLF TRADER</span>. All rights reserved.
   </footer>
 
 </body>
